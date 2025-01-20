@@ -4,9 +4,17 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { getProjects } from '@/lib/mdUtils';
 
+type Project = {
+  id: string;
+  contentHtml: string;
+  description: string;
+  title: string;
+  date: string;
+  stars?: number; 
+};
 
 export default async function ProjectsPage() {
-  const projects = await getProjects();
+  const projects: Project[] = await getProjects();
 
   return (
     <div className="space-y-6">

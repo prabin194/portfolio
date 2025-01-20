@@ -28,7 +28,10 @@ export async function getProjects() {
             return {
                 id,
                 contentHtml,
-                ...data,
+                title: data.title,
+                description: data.description,
+                date: data.date,
+                stars: data.stars
             };
         })
     );
