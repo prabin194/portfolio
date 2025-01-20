@@ -15,7 +15,7 @@ export default async function ProjectsPage() {
       <div className="grid gap-4 md:grid-cols-2">
         {projects.map((project) => (
           <Card 
-            key={project?.title}
+            key={project?.id}
             className="bg-card border-border hover:border-primary/20 transition-colors"
           >
             <CardHeader className="space-y-0">
@@ -24,7 +24,7 @@ export default async function ProjectsPage() {
                   variant="secondary" 
                   className="bg-emerald-950 text-primary hover:bg-emerald-950"
                 >
-                  {project?.year}
+                  {project?.date}
                 </Badge>
                 <div className="flex items-center gap-1 text-muted-foreground">
                   <span>{project?.stars}</span>

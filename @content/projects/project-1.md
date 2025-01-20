@@ -1,8 +1,9 @@
 ---
-title: "Project Name"
+title: "Personal Website"
 description: "Project description"
 date: "2024-03-20"
 image: "/images/project-1.png"
+stars: 0
 tags: ["React", "Node.js", "TypeScript"]
 ---
 
