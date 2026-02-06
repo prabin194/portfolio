@@ -5,12 +5,6 @@ description: "How I shipped bos-nepali-date: a fully localized, accessible Bikra
 readTime: "3 min"
 ---
 
-**Author:** Prabin  
-**Published:** Feb 6, 2026  
-**Read time:** 3 min
-
----
-
 When teams needed Bikram Sambat support, they were re-implementing incomplete pickers with brittle inputs and missing accessibility. I wanted a drop-in React component that just works—no Tailwind setup or custom conversion wiring required.
 
 ## The problem I set out to solve
