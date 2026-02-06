@@ -68,7 +68,8 @@ export async function getBlogs() {
                 return {
                     title: data.title,
                     slug: file.replace('.md', ''),
-                    date: data.date
+                    date: data.date,
+                    tags: Array.isArray(data.tags) ? data.tags : []
                 }
             })
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -103,7 +104,8 @@ export async function getLatestBlog() {
                     title: data.title,
                     slug: file.replace('.md', ''),
                     year: year,
-                    date: data.date // Assuming date is in your frontmatter
+                    date: data.date, // Assuming date is in your frontmatter
+                    tags: Array.isArray(data.tags) ? data.tags : []
                 }
             })
             .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())

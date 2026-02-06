@@ -3,6 +3,7 @@ title: "Shipping nepali-keyboard: Preeti → Unicode made easy for the web"
 date: "2023-07-16"
 description: "Why I built a lightweight JS/TS package to convert Preeti text to Nepali Unicode across frameworks."
 readTime: "3 min"
+tags: ["JavaScript", "TypeScript", "Unicode", "Nepali"]
 ---
 
 Preeti is still everywhere in legacy docs, but modern apps need Unicode. I built **nepali-keyboard** so teams can drop in a tiny converter and ship Nepali text without wrestling with fonts or copy/paste errors.

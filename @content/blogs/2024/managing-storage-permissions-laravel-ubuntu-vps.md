@@ -2,6 +2,7 @@
 title: "Managing Storage Permissions in Laravel on Ubuntu VPS: A Step-by-Step Guide"
 date: "2024-01-31"
 description: "Copy-paste commands to set Laravel storage permissions and ownership safely on Ubuntu." 
+tags: ["Laravel", "Ubuntu", "Permissions", "DevOps"]
 ---
 
 To change storage permissions in a Laravel application hosted on an Ubuntu VPS server, we typically need to adjust the permissions of the `storage` directory and its subdirectories.
@@ -63,4 +64,3 @@ Visit your Laravel application and confirm everything works correctly.
 Check logs for errors and verify that file uploads, caching, and logging behave as expected.
 
 By following these steps, you should be able to correctly configure storage permissions for your Laravel application running on an Ubuntu VPS. Always follow security best practices and grant only the permissions that are necessary.
-

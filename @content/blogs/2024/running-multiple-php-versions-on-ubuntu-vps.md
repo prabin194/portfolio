@@ -3,6 +3,7 @@ title: "Running PHP 7.4 and PHP 8.2 on the Same VPS: A Step-by-Step Guide"
 date: "2024-11-16"
 description: "Configure Apache on Ubuntu to serve different sites with PHP 7.4 and PHP 8.2 side by side."
 readTime: "3 min"
+tags: ["PHP", "Apache", "Ubuntu", "DevOps"]
 ---
 
 When you host multiple PHP projects on one VPS, you often need different PHP versions. With Apache2 on Ubuntu, you can run PHP 7.4 for one site and PHP 8.2 for another using PHP-FPM. Here’s how.

@@ -3,6 +3,7 @@ title: "Building a reusable Nepali (BS) date picker for React: what I shipped an
 date: "2026-02-06"
 description: "How I shipped bos-nepali-date: a fully localized, accessible Bikram Sambat date picker with plug-in data, masking, and built-in styling."
 readTime: "3 min"
+tags: ["React", "TypeScript", "Component", "Date", "Localization", "Nepali Date Picker"]
 ---
 
 When teams needed Bikram Sambat support, they were re-implementing incomplete pickers with brittle inputs and missing accessibility. I wanted a drop-in React component that just works—no Tailwind setup or custom conversion wiring required.

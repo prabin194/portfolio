@@ -80,6 +80,18 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               <time dateTime={data.date}>{data.date}</time>
             </div>
           )}
+          {Array.isArray(data.tags) && data.tags.length > 0 && (
+            <div className="mt-3 flex flex-wrap gap-2">
+              {data.tags.map((tag: string) => (
+                <span
+                  key={`${data.slug || slug}-${tag}`}
+                  className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
         <div
           className="article-content"
