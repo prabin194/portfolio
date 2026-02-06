@@ -3,6 +3,7 @@ import { GeistSans } from 'geist/font/sans'
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import "./globals.css"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geist = GeistSans
 
@@ -32,6 +33,7 @@ export default function RootLayout({
               {children}
             </main>
           </div>
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
