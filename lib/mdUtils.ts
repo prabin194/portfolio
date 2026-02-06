@@ -32,7 +32,12 @@ export async function getProjects() {
                 title: data.title,
                 description: data.description,
                 date: data.date,
-                stars: data.stars
+                updated: data.updated,
+                stars: data.stars,
+                repo: data.repo, // optional GitHub repo name or full slug
+                homepage: data.homepage,
+                language: data.language,
+                tags: data.tags
             };
         })
     );
