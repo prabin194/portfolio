@@ -17,11 +17,12 @@ export default async function Home() {
           </p>
         </div>
         <Image
-          src="/portfilo.jpeg?height=150&width=150"
+          src="/portfilo.jpeg"
           alt="Profile mascot"
           width={150}
           height={150}
-          className="hidden lg:block"
+          className="hidden lg:block rounded-full"
+          priority
         />
       </section>
 
@@ -54,4 +55,3 @@ export default async function Home() {
     </div>
   )
 }
-
