@@ -5,12 +5,6 @@ description: "Why I built a lightweight JS/TS package to convert Preeti text to 
 readTime: "3 min"
 ---
 
-**Author:** Prabin  
-**Published:** Jul 16, 2023  
-**Read time:** 3 min
-
----
-
 Preeti is still everywhere in legacy docs, but modern apps need Unicode. I built **nepali-keyboard** so teams can drop in a tiny converter and ship Nepali text without wrestling with fonts or copy/paste errors.
 
 ## What the library does
