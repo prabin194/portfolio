@@ -9,6 +9,7 @@ import html from "remark-html";
 import sanitizeHtml from "sanitize-html";
 
 export const dynamic = "force-dynamic";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://prabin194.com.np";
 
 interface ArticlePageParams {
   year: string;
@@ -22,14 +23,27 @@ type ArticlePageProps = {
 export async function generateMetadata({ params }: { params: Promise<ArticlePageParams> }): Promise<Metadata> {
   const { year, slug } = await params;
   const filePath = path.join(process.cwd(), "@content/blogs", year, `${slug}.md`);
-  
+
   try {
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const { data } = matter(fileContent);
-    
+
     return {
       title: data.title || "Untitled Article",
       description: data.description || data.title || "No description provided",
+      openGraph: {
+        title: data.title || "Untitled Article",
+        description: data.description || data.title || "No description provided",
+        url: `${SITE_URL}/articles/${year}/${slug}`,
+        type: "article",
+        publishedTime: data.date,
+        tags: Array.isArray(data.tags) ? data.tags : undefined,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: data.title || "Untitled Article",
+        description: data.description || data.title || "No description provided",
+      },
     };
   } catch (error) {
     return {
