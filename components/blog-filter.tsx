@@ -96,6 +96,14 @@ export function BlogFilter({ posts }: { posts: BlogItem[] }) {
         />
       </div>
 
+      <div
+        className="text-xs text-muted-foreground"
+        aria-live="polite"
+      >
+        Showing {filtered.length} post{filtered.length === 1 ? "" : "s"}
+        {tag !== "All" ? ` with tag “${tag}”` : ""}{year !== "All" ? ` in ${year}` : ""}{search ? ` matching “${search}”` : ""}.
+      </div>
+
       {Object.keys(grouped)
         .sort((a, b) => Number(b) - Number(a))
         .map((yr) => (

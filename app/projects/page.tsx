@@ -34,6 +34,10 @@ export default async function ProjectsPage() {
     <div className="space-y-6">
       <h1 className="text-4xl font-bold">Projects</h1>
       
+      {projects.length === 0 && (
+        <p className="text-sm text-muted-foreground">No projects yet. Check back soon.</p>
+      )}
+
       <div className="grid gap-4 md:grid-cols-2">
         {projects.map((project) => (
           <Card 
@@ -58,10 +62,32 @@ export default async function ProjectsPage() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h2 className="font-medium">{project?.title}</h2>
+                <h2 className="font-medium">
+                  <Link
+                    href={project.repo ? `https://github.com/${project.repo}` : "#"}
+                    className="hover:text-primary"
+                  >
+                    {project?.title}
+                  </Link>
+                </h2>
                 <p className="mt-1 text-sm text-muted-foreground">{project?.description}</p>
+                {project?.contentHtml && (
+                  <div
+                    className="prose prose-invert mt-3 text-sm"
+                    dangerouslySetInnerHTML={{ __html: project.contentHtml }}
+                  />
+                )}
+                {Array.isArray(project.tags) && project.tags.length > 0 && (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <Badge key={`${project.id}-tag-${tag}`} variant="secondary" className="bg-muted text-foreground">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
               </div>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 {project.repo && (
                   <Link
                     href={`https://github.com/${project.repo}`}
@@ -70,7 +96,17 @@ export default async function ProjectsPage() {
                     rel="noreferrer"
                   >
                     <Github className="h-4 w-4" />
-                    Repo
+                    View repo
+                  </Link>
+                )}
+                {project.homepage && (
+                  <Link
+                    href={project.homepage}
+                    className="inline-flex items-center gap-1 text-sm text-foreground hover:text-primary"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Live demo
                   </Link>
                 )}
                 {project.language && (
