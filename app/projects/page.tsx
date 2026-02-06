@@ -71,21 +71,6 @@ export default async function ProjectsPage() {
                   </Link>
                 </h2>
                 <p className="mt-1 text-sm text-muted-foreground">{project?.description}</p>
-                {project?.contentHtml && (
-                  <div
-                    className="prose prose-invert mt-3 text-sm"
-                    dangerouslySetInnerHTML={{ __html: project.contentHtml }}
-                  />
-                )}
-                {Array.isArray(project.tags) && project.tags.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <Badge key={`${project.id}-tag-${tag}`} variant="secondary" className="bg-muted text-foreground">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
               </div>
               <div className="flex flex-wrap items-center gap-3">
                 {project.repo && (
