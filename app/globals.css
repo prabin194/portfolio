@@ -95,4 +95,44 @@
     left: 0.75rem;
     transform: translateY(0);
   }
+
+  /* Article content typography */
+  .article-content {
+    max-width: 68ch;
+    line-height: 1.7;
+  }
+  .article-content h2,
+  .article-content h3,
+  .article-content h4 {
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+    font-weight: 700;
+  }
+  .article-content p {
+    margin: 0.9em 0;
+  }
+  .article-content ul,
+  .article-content ol {
+    margin: 0.9em 0 0.9em 1.2em;
+    list-style: disc;
+  }
+  .article-content ol {
+    list-style: decimal;
+  }
+  .article-content code {
+    background: hsl(var(--muted));
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.35rem;
+    font-size: 0.95em;
+  }
+  .article-content pre {
+    background: hsl(var(--muted));
+    padding: 1rem;
+    border-radius: 0.75rem;
+    overflow-x: auto;
+  }
+  .article-content pre code {
+    background: transparent;
+    padding: 0;
+  }
 }

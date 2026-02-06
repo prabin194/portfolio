@@ -8,15 +8,20 @@ import { remark } from "remark";
 import html from "remark-html";
 import sanitizeHtml from "sanitize-html";
 
-interface ArticlePageProps {
-  params: {
-    year: string;
-    slug: string;
-  };
+export const dynamic = "force-dynamic";
+
+interface ArticlePageParams {
+  year: string;
+  slug: string;
 }
 
-export async function generateMetadata({ params }: { params: { year: string; slug: string } }): Promise<Metadata> {
-  const filePath = path.join(process.cwd(), "@content/blogs", params.year, `${params.slug}.md`);
+type ArticlePageProps = {
+  params: Promise<ArticlePageParams>;
+};
+
+export async function generateMetadata({ params }: { params: Promise<ArticlePageParams> }): Promise<Metadata> {
+  const { year, slug } = await params;
+  const filePath = path.join(process.cwd(), "@content/blogs", year, `${slug}.md`);
   
   try {
     const fileContent = fs.readFileSync(filePath, "utf-8");
@@ -35,9 +40,16 @@ export async function generateMetadata({ params }: { params: { year: string; slu
 }
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
-  const { year, slug } = params;
+  const { year, slug } = await params;
 
-  const filePath = path.join(process.cwd(), "@content/blogs", year, `${slug}.md`);
+  if (!year || !slug) {
+    notFound();
+  }
+
+  const safeYear = String(year);
+  const safeSlug = String(slug);
+
+  const filePath = path.resolve(process.cwd(), "@content", "blogs", safeYear, `${safeSlug}.md`);
 
   // Check if the file exists
   if (!fs.existsSync(filePath)) {
