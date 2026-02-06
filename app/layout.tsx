@@ -20,13 +20,20 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={geist.className}>
         <ThemeProvider>
+          <a
+            href="#main-content"
+            className="skip-link"
+          >
+            Skip to main content
+          </a>
           <div className="min-h-screen bg-background text-foreground">
             <Header />
-            <main className="mx-auto max-w-3xl px-6 py-12">{children}</main>
+            <main id="main-content" className="mx-auto max-w-3xl px-6 py-12">
+              {children}
+            </main>
           </div>
         </ThemeProvider>
       </body>
     </html>
   )
 }
-

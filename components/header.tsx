@@ -1,7 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Home, User, BookOpen, Code, Github, Moon, Sun, Menu, X } from 'lucide-react'
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
@@ -9,6 +10,7 @@ import { Button } from "@/components/ui/button"
 export function Header() {
   const { theme, setTheme } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev)
 
@@ -19,6 +21,17 @@ export function Header() {
     { href: "/projects", label: "Projects", icon: Code },
     { href: "https://github.com/prabin194", label: "GitHub", icon: Github },
   ]
+
+  // Close mobile menu on navigation change for accessibility
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [pathname])
+
+  const isActive = (href: string) => {
+    if (href.startsWith("http")) return false
+    if (href === "/") return pathname === "/"
+    return pathname?.startsWith(href)
+  }
 
   return (
     <header className="border-b border-border">
@@ -34,7 +47,12 @@ export function Header() {
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+              aria-current={isActive(href) ? "page" : undefined}
+              className={`flex items-center gap-2 text-sm transition-colors hover:text-foreground focus-visible:outline-none ${
+                isActive(href)
+                  ? "text-foreground"
+                  : "text-muted-foreground"
+              }`}
             >
               <Icon className="h-4 w-4" />
               {label}
@@ -45,15 +63,16 @@ export function Header() {
         {/* Right Side: Hamburger + Dark Mode Toggle */}
         <div className="flex items-center gap-4">
           {/* Dark Mode Toggle */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            aria-label="Toggle Theme"
-          >
-            <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-            <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              aria-label="Toggle Theme"
+              className="focus-visible:outline-none"
+            >
+              <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            </Button>
 
           {/* Mobile Menu Button */}
           <Button
@@ -78,6 +97,7 @@ export function Header() {
                 size="icon"
                 onClick={toggleMenu}
                 aria-label="Close Menu"
+                className="focus-visible:outline-none"
               >
                 <X className="h-6 w-6" />
               </Button>
@@ -89,7 +109,12 @@ export function Header() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    aria-current={isActive(href) ? "page" : undefined}
+                    className={`flex items-center gap-2 text-sm transition-colors hover:text-foreground focus-visible:outline-none ${
+                      isActive(href)
+                        ? "text-foreground"
+                        : "text-muted-foreground"
+                    }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Icon className="h-4 w-4" />

@@ -73,5 +73,26 @@
   body {
     @apply bg-background text-foreground;
   }
-}
 
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 0.5rem;
+    z-index: 50;
+    transition: transform 150ms ease, left 150ms ease;
+  }
+
+  .skip-link:focus-visible {
+    left: 0.75rem;
+    transform: translateY(0);
+  }
+}
