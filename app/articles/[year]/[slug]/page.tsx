@@ -4,6 +4,9 @@ import { Calendar } from "lucide-react";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { remark } from "remark";
+import html from "remark-html";
+import sanitizeHtml from "sanitize-html";
 
 interface ArticlePageProps {
   params: {
@@ -45,11 +48,15 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(fileContent);
 
+    const processedContent = await remark()
+      .use(html)
+      .process(content);
+
+    const sanitizedHtml = sanitizeHtml(processedContent.toString());
+
     if (!data?.title) {
       notFound();
     }
-
-    const metadata = await generateMetadata({ params });
 
     return (
       <div className="max-w-3xl mx-auto">
@@ -64,7 +71,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         </div>
         <div
           className="article-content"
-          dangerouslySetInnerHTML={{ __html: data.content }}
+          dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
         />
       </div>
     );

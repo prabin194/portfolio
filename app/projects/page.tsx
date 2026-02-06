@@ -34,16 +34,24 @@ export default async function ProjectsPage() {
                 >
                   {project?.date}
                 </Badge>
-                <div className="flex items-center gap-1 text-muted-foreground">
-                  <span>{project?.stars}</span>
-                  <Star className="h-4 w-4 fill-current" />
-                </div>
+                {typeof project?.stars === "number" && (
+                  <div className="flex items-center gap-1 text-muted-foreground">
+                    <span>{project.stars}</span>
+                    <Star className="h-4 w-4 fill-current" />
+                  </div>
+                )}
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
                 <h2 className="font-medium">{project?.title}</h2>
                 <p className="mt-1 text-sm text-muted-foreground">{project?.description}</p>
+                {project?.contentHtml && (
+                  <div
+                    className="prose prose-invert mt-3 text-sm"
+                    dangerouslySetInnerHTML={{ __html: project.contentHtml }}
+                  />
+                )}
               </div>
               <div className="flex gap-3">
                
@@ -55,4 +63,3 @@ export default async function ProjectsPage() {
     </div>
   )
 }
-
