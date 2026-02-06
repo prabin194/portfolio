@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Prabin Paudel — Personal Site
 
-## Getting Started
+A minimal, fast personal website built with Next.js (App Router), Tailwind, and a content-first workflow. The site is split into three pillars:
 
-First, run the development server:
+- **Writing** — Blog posts are markdown files under `@content/blogs`, grouped by year. They render as static pages with safe, sanitized HTML.
+- **Projects** — Each project is a markdown file in `@content/projects`. A sync script pulls all of my public, non-fork GitHub repositories into this folder and keeps stars/updated dates in sync while preserving my custom descriptions.
+- **About** — Biography, tools, and contact links.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Highlights
+- **Content in git**: All posts/projects live as markdown alongside the code; no CMS dependency.
+- **GitHub-aware projects**: Run `npm run sync:github` to refresh project metadata from GitHub. Add `repo: "owner/name"` in frontmatter to link cards to the repo.
+- **Dark/light theme**: Theme toggle with `next-themes`, focus-visible outlines, and a skip link for accessibility.
+- **Responsive nav**: Mobile menu auto-closes on navigation; `aria-current` for active links.
+- **Safe rendering**: Markdown is sanitized before injection to prevent XSS.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Structure
+- `app/` — Pages (Home, Blog index, Article route, Projects, About) plus layout and global styles.
+- `@content/` — Markdown sources:
+  - `blogs/<year>/*.md`
+  - `projects/*.md`
+- `lib/` — Content helpers and utilities.
+- `scripts/` — `sync-github-projects.js` to mirror GitHub repos into content.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
+- View site locally: `npm run dev`
+- Refresh project data from GitHub: `npm run sync:github` (set `GITHUB_TOKEN` to avoid rate limits)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+- GitHub: https://github.com/prabin194
+- Email: hello@prabin194.com
