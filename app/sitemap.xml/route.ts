@@ -8,7 +8,7 @@ const CONTENT_DIR = path.join(process.cwd(), "@content");
 type UrlEntry = { loc: string; lastmod?: string };
 
 function getStaticRoutes(): UrlEntry[] {
-  const routes = ["", "/about", "/blog", "/projects"];
+  const routes = ["", "/about", "/blog", "/projects", "/privacy-policy", "/terms-and-conditions"];
   return routes.map((r) => ({ loc: `${SITE_URL}${r}` }));
 }
 
