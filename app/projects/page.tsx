@@ -11,11 +11,12 @@ type Project = {
   title: string;
   date: string;
   updated?: string;
-  stars?: number; 
+  stars?: number;
   repo?: string;
   homepage?: string;
   language?: string;
   tags?: string[];
+  demoPath?: string;
 };
 
 export default async function ProjectsPage() {
@@ -92,6 +93,14 @@ export default async function ProjectsPage() {
                     rel="noreferrer"
                   >
                     Live demo
+                  </Link>
+                )}
+                {project.demoPath && (
+                  <Link
+                    href={project.demoPath}
+                    className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
+                  >
+                    Try Demo →
                   </Link>
                 )}
                 {project.language && (

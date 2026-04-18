@@ -37,7 +37,8 @@ export async function getProjects() {
                 repo: data.repo, // optional GitHub repo name or full slug
                 homepage: data.homepage,
                 language: data.language,
-                tags: data.tags
+                tags: data.tags,
+                demoPath: data.demoPath
             };
         })
     );

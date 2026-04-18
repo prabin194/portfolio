@@ -7,6 +7,7 @@ stars: 0
 language: "TypeScript"
 tags: ["TypeScript"]
 repo: "prabin194/bos-nepali-date"
+demoPath: "/projects/bos-nepali-date"
 ---
 
 ## About
