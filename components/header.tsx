@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Home, User, BookOpen, Code, Github, Moon, Sun, Menu, X } from 'lucide-react'
@@ -22,11 +22,6 @@ export function Header() {
     { href: "https://github.com/prabin194", label: "GitHub", icon: Github },
   ]
 
-  // Close mobile menu on navigation change for accessibility
-  useEffect(() => {
-    setIsMenuOpen(false)
-  }, [pathname])
-
   const isActive = (href: string) => {
     if (href.startsWith("http")) return false
     if (href === "/") return pathname === "/"
@@ -35,7 +30,7 @@ export function Header() {
 
   return (
     <header className="border-b border-border">
-      <nav className="mx-auto flex h-16 max-w-3xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 xl:px-8">
         {/* Title */}
         <div className="text-lg font-semibold lg:hidden">
           Prabin
