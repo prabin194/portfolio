@@ -8,6 +8,7 @@ language: "TypeScript"
 tags: ["TypeScript"]
 repo: "prabin194/portfolio"
 homepage: "https://prabin194.com.np"
+vpatLabel: "VPAT"
 ---
 
 ## About

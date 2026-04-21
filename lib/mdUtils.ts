@@ -7,11 +7,32 @@ import sanitizeHtml from 'sanitize-html';
 
 const contentDirectory = path.join(process.cwd(), '@content');
 
+export type Project = {
+    id: string;
+    contentHtml: string;
+    description: string;
+    title: string;
+    date: string;
+    updated?: string;
+    stars?: number;
+    repo?: string;
+    homepage?: string;
+    language?: string;
+    tags: string[];
+    audience?: string;
+    impact?: string;
+    role?: string;
+    featured?: boolean;
+    vpatUrl?: string;
+    vpatLabel?: string;
+    demoPath?: string;
+};
+
 export async function getProjects() {
     const projectsDirectory = path.join(contentDirectory, 'projects');
     const fileNames = fs.readdirSync(projectsDirectory);
 
-    const projects = await Promise.all(
+    const projects: Project[] = await Promise.all(
         fileNames.map(async (fileName) => {
             const id = fileName.replace(/\.md$/, '');
             const fullPath = path.join(projectsDirectory, fileName);
@@ -37,8 +58,14 @@ export async function getProjects() {
                 repo: data.repo, // optional GitHub repo name or full slug
                 homepage: data.homepage,
                 language: data.language,
-                tags: data.tags,
-                demoPath: data.demoPath
+                tags: Array.isArray(data.tags) ? data.tags : [],
+                audience: data.audience,
+                impact: data.impact,
+                role: data.role,
+                featured: Boolean(data.featured),
+                vpatUrl: data.vpatUrl,
+                vpatLabel: data.vpatLabel,
+                demoPath: data.demoPath,
             };
         })
     );
@@ -47,6 +74,14 @@ export async function getProjects() {
     return projects.sort((a, b) => {
         return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
+}
+
+export async function getFeaturedProjects(limit = 3) {
+    const projects = await getProjects();
+
+    return projects
+        .filter((project) => project.featured)
+        .slice(0, limit);
 }
 
 export async function getBlogs() {

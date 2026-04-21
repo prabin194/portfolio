@@ -1,16 +1,20 @@
 ---
 title: "nepali-keyboard"
-description: "  Introducing our powerful package that seamlessly converts Preeti text to Nepali Unicode text, designed specifically for use in all JavaScript frameworks. This package offers a convenient solution for developers looking to display Nepali text in Unicode format across their applications, websites, or systems."
+description: "JavaScript package for converting Preeti text to Nepali Unicode."
 date: "2023-07-16"
 updated: "2023-07-16"
 stars: 0
 language: "JavaScript"
-tags: ["JavaScript"]
+tags: ["JavaScript", "Localization", "Text conversion"]
 repo: "prabin194/nepali-keyboard"
+audience: "developers who need Preeti-to-Unicode conversion in JavaScript apps"
+impact: "Removes a common integration pain point by making Nepali text conversion usable across modern frontend projects."
+role: "Built the package and documented the integration approach."
+featured: true
 ---
 
 ## About
 
-  Introducing our powerful package that seamlessly converts Preeti text to Nepali Unicode text, designed specifically for use in all JavaScript frameworks. This package offers a convenient solution for developers looking to display Nepali text in Unicode format across their applications, websites, or systems.
+JavaScript package for converting Preeti text to Nepali Unicode.
 
 - GitHub: https://github.com/prabin194/nepali-keyboard
