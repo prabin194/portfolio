@@ -158,6 +158,14 @@ export default async function Home() {
             </Card>
           ))}
         </div>
+        <Image
+          src="/portfolio.jpeg"
+          alt="Profile mascot"
+          width={150}
+          height={150}
+          className="hidden lg:block rounded-full"
+          priority
+        />
       </section>
 
       <section>
