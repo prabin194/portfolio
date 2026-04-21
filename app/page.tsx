@@ -17,7 +17,7 @@ export default async function Home() {
           </p>
         </div>
         <Image
-          src="/portfilo.jpeg"
+          src="/portfolio.jpeg"
           alt="Profile mascot"
           width={150}
           height={150}
