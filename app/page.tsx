@@ -138,6 +138,11 @@ export default async function Home() {
                       Live demo
                     </Link>
                   )}
+                  {project.demoPath && (
+                    <Link href={project.demoPath} className="text-primary hover:underline">
+                      Try Demo
+                    </Link>
+                  )}
                   {project.repo && (
                     <Link href={`https://github.com/${project.repo}`} target="_blank" rel="noreferrer" className="text-primary hover:underline">
                       Source code

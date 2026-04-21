@@ -109,6 +109,14 @@ export default async function ProjectsPage() {
                     Live demo
                   </Link>
                 )}
+                {project.demoPath && (
+                  <Link
+                    href={project.demoPath}
+                    className="inline-flex items-center gap-1 text-sm text-primary hover:underline"
+                  >
+                    Try Demo
+                  </Link>
+                )}
                 {project.language && (
                   <Badge variant="secondary" className="bg-muted text-foreground">
                     {project.language}

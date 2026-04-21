@@ -25,6 +25,7 @@ export type Project = {
     featured?: boolean;
     vpatUrl?: string;
     vpatLabel?: string;
+    demoPath?: string;
 };
 
 export async function getProjects() {
@@ -64,6 +65,7 @@ export async function getProjects() {
                 featured: Boolean(data.featured),
                 vpatUrl: data.vpatUrl,
                 vpatLabel: data.vpatLabel,
+                demoPath: data.demoPath,
             };
         })
     );
