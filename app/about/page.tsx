@@ -1,36 +1,41 @@
 import Link from "next/link"
-import { Mail, Github, Twitter } from 'lucide-react'
+import { ArrowUpRight, Github, Mail } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-const tools = [
+const strengths = [
   {
-    category: "Development",
+    title: "Backend architecture",
+    description: "I enjoy shaping APIs, auth flows, action-based service layers, and backend code that stays understandable as products grow.",
+  },
+  {
+    title: "Product-minded implementation",
+    description: "I care about the experience around the code too: forms, edge cases, operational safety, and interfaces that feel straightforward.",
+  },
+  {
+    title: "Writing and teaching",
+    description: "A lot of my work turns into articles, package docs, or internal patterns. Clear explanation is part of the engineering work.",
+  },
+]
+
+const stack = [
+  {
+    category: "Build with",
     items: [
-      { name: "VS Code", description: "Editor" },
-      { name: "PHPStrom", description: "Editor" },
-      { name: "Terminal", description: "Terminal" },
-      { name: "Brave", description: "Browser and dev tools" },
+      { name: "React.js", description: "Interfaces and component systems" },
+      { name: "TypeScript", description: "Typed frontend and tooling" },
+      { name: "Vue", description: "Interactive web applications" },
+      { name: "Laravel", description: "APIs and backend systems" },
+      { name: "Next.js", description: "Web products and content sites" },
+      { name: "React Native", description: "Mobile-friendly product work" },
     ]
   },
   {
-    category: "Design",
+    category: "Care about",
     items: [
-      { name: "Figma", description: "Design tool" },
-      { name: "Framer", description: "Design tool" },
-    ]
-  },
-  {
-    category: "Productivity",
-    items: [
-      { name: "Github", description: "Issue Tickets" },
-      { name: "Notion", description: "Notes and documentation" },
-    ]
-  },
-  {
-    category: "Hardware",
-    items: [
-      { name: "MacBook Pro M3", description: "14-inch, 2023" },
-      { name: "Benq PD2705Q", description: "27-inch 2K monitor" },
+      { name: "Maintainability", description: "Clear contracts and structure" },
+      { name: "Reliability", description: "Edge cases, testing, safe writes" },
+      { name: "Usability", description: "Practical interfaces with less friction" },
+      { name: "Communication", description: "Writing that explains decisions" },
     ]
   }
 ]
@@ -42,12 +47,13 @@ export default function AboutPage() {
         <h1 className="text-4xl font-bold">About me</h1>
         <div className="mt-6 space-y-4 text-muted-foreground">
           <p>
-            Hey, I&apos;m Prabin. I&apos;ve been a software developer since 2019, and I&apos;ve been making
-            websites since 2017.
+            I&apos;m Prabin, a software developer from Nepal. I&apos;ve been building software professionally since 2019 and making websites since 2017.
           </p>
           <p>
-            This is my spot on the web for writing, projects, tutorials, art, and anything else I want
-            to put out there. Check out the{" "}
+            My strongest work sits between product thinking and engineering discipline: backend architecture, developer-facing tooling, and web interfaces that stay clear as complexity grows.
+          </p>
+          <p>
+            This site is where I publish project work, implementation notes, and articles about the systems I build. Check out the{" "}
             <Link href="/blog" className="text-primary hover:underline">
               blog
             </Link>
@@ -58,20 +64,16 @@ export default function AboutPage() {
             page to see a highlight of my open-source work.
           </p>
           <p>
-            This site has no ads, no affiliate links, no tracking or analytics, no sponsored posts, and
-            no paywall. My motivation for this site is to have a space for self-expression and to
-            share what I&apos;ve learned with the world. I hope I will inspire others to make their own
-            creative corner on the web as well.
+            I like shipping useful things, especially where local context matters. That includes tools for Nepali users, reusable packages, and content that helps other developers avoid repeated mistakes.
           </p>
           <p>
-            Feel free to contact me by email at{" "}
-            <span className="text-primary">
-              hello at prabin194.com
-            </span>{" "}
-            to say hi!
+            If you&apos;re building something and need a developer who can structure the backend, implement the frontend, and explain the tradeoffs clearly, email me at{" "}
+            <Link href="mailto:hello@prabin194.com" className="text-primary hover:underline">
+              hello@prabin194.com
+            </Link>.
           </p>
         </div>
-        <div className="mt-8 flex gap-4">
+        <div className="mt-8 flex flex-wrap gap-4">
           <Link
             href="https://github.com/prabin194"
             className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -79,13 +81,36 @@ export default function AboutPage() {
             <Github className="h-4 w-4" />
             GitHub
           </Link>
+          <Link
+            href="mailto:hello@prabin194.com"
+            className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <Mail className="h-4 w-4" />
+            Email
+          </Link>
         </div>
       </section>
 
       <section>
-        <h2 className="text-2xl font-bold mb-6">Tools</h2>
+        <h2 className="mb-6 text-2xl font-bold">What I bring</h2>
+        <div className="grid gap-6 md:grid-cols-3">
+          {strengths.map((strength) => (
+            <Card key={strength.title} className="bg-card border-border">
+              <CardHeader>
+                <CardTitle className="text-lg">{strength.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm leading-6 text-muted-foreground">{strength.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="mb-6 text-2xl font-bold">How I work</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {tools.map((category) => (
+          {stack.map((category) => (
             <Card key={category.category} className="bg-card border-border">
               <CardHeader>
                 <CardTitle className="text-lg">{category.category}</CardTitle>
@@ -104,7 +129,21 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
+
+      <section className="rounded-3xl border border-border bg-card/60 p-8">
+        <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">Work with me</p>
+        <h2 className="mt-3 text-3xl font-bold tracking-tight">I build products with clear architecture and practical UX.</h2>
+        <p className="mt-4 max-w-2xl text-muted-foreground">
+          I&apos;m especially useful when a project needs both implementation depth and someone who can keep the structure understandable for the next stage of growth.
+        </p>
+        <Link
+          href="mailto:hello@prabin194.com"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90"
+        >
+          Start a conversation
+          <ArrowUpRight className="h-4 w-4" />
+        </Link>
+      </section>
     </div>
   )
 }
-
