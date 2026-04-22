@@ -71,7 +71,7 @@ export default async function Home() {
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <Image
-                src="/portfilo.jpeg"
+                src="/portfolio.jpeg"
                 alt="Profile mascot"
                 width={84}
                 height={84}
@@ -158,14 +158,6 @@ export default async function Home() {
             </Card>
           ))}
         </div>
-        <Image
-          src="/portfolio.jpeg"
-          alt="Profile mascot"
-          width={150}
-          height={150}
-          className="hidden lg:block rounded-full"
-          priority
-        />
       </section>
 
       <section>
